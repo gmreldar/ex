@@ -28,7 +28,7 @@ class MailChimpFactory implements MailNotificationInterface
      */
     public function __construct(Request $request)
     {
-        $this->listId = env('MAILCHIMP_LIST_ID');
+        $this->listId = config('MAILCHIMP_LIST_ID');
         $this->request = $request;
         $this->mailChimpClient = Newsletter::getApi();
     }
@@ -99,7 +99,7 @@ class MailChimpFactory implements MailNotificationInterface
      */
     private function getUpc($product)
     {
-        return env('APP_URL') . 'img/ups/' . $this->getLanguageCode() . '/'
+        return config('APP_URL') . 'img/ups/' . $this->getLanguageCode() . '/'
             . strtolower(str_replace(' ', '_', $product['name'])) . '.png';
     }
 
